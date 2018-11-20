@@ -1,0 +1,86 @@
+<?xml version="1.0" ?>
+<project name="FracCalc" default="main">
+
+    <property name="build.dir"         value="build" />
+    <property name="classes.dir"       value="${build.dir}/classes" />
+    <property name="jar.dir"           value="${build.dir}/jar" />
+    <property name="main.build"        value="${classes.dir}/java/main" />
+    <property name="test.build"        value="${classes.dir}/java/test" />
+
+    <property name="src.dir"           value="src" />
+    <property name="main.src"          value="${src.dir}/main/java" />
+    <property name="test.src"          value="${src.dir}/test/java" />
+
+    <property name="lib.dir"           value="lib" />
+
+    <property name="config.dir"        value="config" />
+    <property name="check.config"      value="${config.dir}/checkstyle/checkstyle.xml" />
+    <property name="reports.dir"       value="${build.dir}/reports" />
+    <property name="check.results"     value="${reports.dir}/checkstyle_errors.xml" />
+    <property name="test.results"      value="${reports.dir}/tests" />
+
+    <property name="main-class"        value="${ant.project.name}" />
+
+    <path id="classpath.test">
+        <pathelement location="${lib.dir}/junit-4.11.jar" />
+        <pathelement location="${lib.dir}/hamcrest-core-1.3.jar" />
+        <pathelement location="${lib.dir}/FracCalcTestHelper.jar" />
+        <pathelement location="${main.build}" />
+    </path>
+
+    <taskdef resource="com/puppycrawl/tools/checkstyle/ant/checkstyle-ant-task.properties" classpath="${lib.dir}/checkstyle-8.13-all.jar" />
+
+    <target name="clean">
+        <delete dir="${build.dir}" />
+    </target>
+
+    <target name="compile">
+        <mkdir dir="${main.build}" />
+        <javac srcdir="${main.src}" destdir="${main.build}" includeantruntime="false"/>
+    </target>
+
+    <target name="jar" depends="compile">
+        <mkdir dir="${jar.dir}" />
+        <jar destfile="${jar.dir}/${ant.project.name}.jar" basedir="${main.build}">
+            <manifest>
+                <attribute name="Main-Class" value="${main-class}" />
+            </manifest>
+        </jar>
+    </target>
+
+    <target name="test-compile" depends="compile">
+        <mkdir dir="${test.build}" />
+        <javac srcdir="${test.src}" destdir="${test.build}" includeantruntime="false">
+            <classpath refid="classpath.test" />
+        </javac>
+    </target>
+
+    <target name="run" depends="jar">
+        <java jar="${jar.dir}/${ant.project.name}.jar" fork="true" />
+    </target>
+
+    <target name="check">
+        <mkdir dir="${reports.dir}" />
+        <checkstyle config="${check.config}">
+            <fileset dir="${src.dir}" includes="**/*.java" />
+            <formatter type="plain" />
+            <formatter type="xml" tofile="${check.results}" />
+        </checkstyle>
+    </target>
+
+    <target name="test" depends="test-compile">
+        <mkdir dir="${test.results}" />
+        <junit printsummary="yes"  haltonfailure="yes" haltonerror="yes">
+            <classpath>
+                <path refid="classpath.test" />
+                <pathelement location="${test.build}" />
+            </classpath>
+            <formatter type="xml"/>
+            <batchtest todir="${test.results}" >
+                <fileset dir="${test.src}" includes="**/FracCalcTestALL.java" />
+            </batchtest>
+        </junit>
+    </target>
+
+    <target name="main" depends="check, test, run" />
+</project>
