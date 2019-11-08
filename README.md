@@ -109,7 +109,7 @@ for completion. They are required, and are worth a substantial part of
 your grade (see breakdown below). You must submit them on time to
 receive full credit.
 
-**Checkpoint 1: Parsing one line of input **
+**Checkpoint 1: Parsing one line of input**
 
 Due: Friday, November 30, 2018
 
