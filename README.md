@@ -111,7 +111,7 @@ receive full credit.
 
 **Checkpoint 1: Parsing one line of input**
 
-Due: Friday, November 30, 2018
+Due: Friday, November 15, 2019
 
 -   Your main() method creates a Scanner, reads one line of input, and
     passes that input to produceAnswer.
@@ -128,7 +128,7 @@ Due: Friday, November 30, 2018
 
 **Checkpoint 2: Multiple lines of input, parsing fractions**
 
-Due: Friday, December 7, 2018
+Due: Friday, November 22, 2019
 
 -   Your main() method now accepts input from the user multiple times
     (until the user types "quit")
@@ -165,7 +165,7 @@ Due: Friday, December 7, 2018
 
 **Checkpoint 3: Evaluation**
 
-Due: Friday, December 14, 2018
+Due: Friday, December 2, 2019
 
 -   produceAnswer must now evaluate the formula it is given (performing
     addition, subtraction, multiplication, and division, based on the
@@ -182,7 +182,7 @@ Due: Friday, December 14, 2018
 Final Project: All requirements complete
 ----------------------------------------
 
-Due: Friday, December 21, 2018
+Due: Friday, December 9, 2019
 
 -   All answers must be reduced
 
