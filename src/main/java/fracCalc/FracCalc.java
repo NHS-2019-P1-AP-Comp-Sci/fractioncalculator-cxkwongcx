@@ -65,7 +65,7 @@ public class FracCalc {
     		if(testOne.indexOf("_") == -1) {
        			String testTwo = input.substring(posTwo - 1);
        			int positionEndTwoNew = testTwo.indexOf("/");
-    			numerator = testTwo.substring(0,positionEndTwoNew);
+    			numerator = testTwo.substring(0+1,positionEndTwoNew);
     		}
     	}
     		
@@ -73,6 +73,7 @@ public class FracCalc {
 //    		String three = input.substring(posTwo -1);
     		String onlyDenom = testOne;
     		 whole = onlyDenom.substring(0);
+    		 denominator = "1";
     		
     	}   	
     	
