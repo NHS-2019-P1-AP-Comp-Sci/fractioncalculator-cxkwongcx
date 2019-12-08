@@ -43,6 +43,7 @@ public class FracCalc {
 //		String nString2 = Num(secondPart);
 //		String dString2 = Dem(secondPart);
 ////		^^getting strings for the second number^^
+		change
 //  ==========================================================================================================
 		int intWhole1 = Integer.parseInt(Whole(firstPart));
 		int intWhole2 = Integer.parseInt(Whole(secondPart));
