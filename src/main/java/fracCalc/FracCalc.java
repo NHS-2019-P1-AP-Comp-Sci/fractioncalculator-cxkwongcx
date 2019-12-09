@@ -108,12 +108,6 @@ public class FracCalc {
 		if (newNum == (0) || newNum == (-0)) {
 			return "0";
 		}
-//		---------------------------------------- if only divide by one
-//		if (newNum == intNum1) {
-//			return Integer.toString(intNum1);
-//		}
-//		---------------------------------------- 
-
 //		-----------------------------------------------------------------------------------------------------
 //		if the improper fraction is less than 1
 		if ((newNum / newDenom) == 0 && newNum > 0) {
